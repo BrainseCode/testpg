@@ -1,13 +1,13 @@
 import { Customer } from "../customer/Customer";
 
 export type Address = {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
   address_1: string | null;
   address_2: string | null;
   city: string | null;
-  state: string | null;
-  zip: number | null;
+  createdAt: Date;
   customers?: Array<Customer>;
+  id: string;
+  state: string | null;
+  updatedAt: Date;
+  zip: number | null;
 };

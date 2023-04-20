@@ -1,11 +1,11 @@
 import { Order } from "../order/Order";
 
 export type Product = {
-  id: string;
   createdAt: Date;
-  updatedAt: Date;
-  name: string | null;
-  itemPrice: number | null;
   description: string | null;
+  id: string;
+  itemPrice: number | null;
+  name: string | null;
   orders?: Array<Order>;
+  updatedAt: Date;
 };

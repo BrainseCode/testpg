@@ -12,8 +12,8 @@ https://docs.yssystems.com/how-to/custom-code
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
-  IsString,
   IsDate,
+  IsString,
   IsOptional,
   IsNumber,
   ValidateNested,
@@ -25,27 +25,11 @@ import { Order } from "../../order/base/Order";
 class Product {
   @ApiProperty({
     required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  id!: string;
-
-  @ApiProperty({
-    required: true,
   })
   @IsDate()
   @Type(() => Date)
   @Field(() => Date)
   createdAt!: Date;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  updatedAt!: Date;
 
   @ApiProperty({
     required: false,
@@ -56,7 +40,15 @@ class Product {
   @Field(() => String, {
     nullable: true,
   })
-  name!: string | null;
+  description!: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  id!: string;
 
   @ApiProperty({
     required: false,
@@ -78,7 +70,7 @@ class Product {
   @Field(() => String, {
     nullable: true,
   })
-  description!: string | null;
+  name!: string | null;
 
   @ApiProperty({
     required: false,
@@ -88,6 +80,14 @@ class Product {
   @Type(() => Order)
   @IsOptional()
   orders?: Array<Order>;
+
+  @ApiProperty({
+    required: true,
+  })
+  @IsDate()
+  @Type(() => Date)
+  @Field(() => Date)
+  updatedAt!: Date;
 }
 
 export { Product as Product };

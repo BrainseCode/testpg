@@ -7,7 +7,7 @@ export const swaggerDocumentOptions = new DocumentBuilder()
   .setDescription(
     'Sample service for e-commerce\n\n## Congratulations! Your service resource is ready.\n  \nPlease note that all endpoints are secured with JWT Bearer authentication.\nBy default, your service resource comes with one user with the username "admin" and password "admin".\nLearn more in [our docs](https://docs.yssystems.com)'
   )
-  .setVersion("c14s0iac")
+  .setVersion("fkb6i7mw")
   .addBearerAuth()
   .build();
 
