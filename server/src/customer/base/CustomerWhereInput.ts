@@ -11,47 +11,26 @@ https://docs.yssystems.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringFilter } from "../../util/StringFilter";
-import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
 import { AddressWhereUniqueInput } from "../../address/base/AddressWhereUniqueInput";
+import { ValidateNested, IsOptional } from "class-validator";
+import { Type } from "class-transformer";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { StringFilter } from "../../util/StringFilter";
+import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
 
 @InputType()
 class CustomerWhereInput {
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: () => AddressWhereUniqueInput,
   })
-  @Type(() => StringFilter)
+  @ValidateNested()
+  @Type(() => AddressWhereUniqueInput)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => AddressWhereUniqueInput, {
     nullable: true,
   })
-  id?: StringFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  firstName?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: StringNullableFilter,
-  })
-  @Type(() => StringNullableFilter)
-  @IsOptional()
-  @Field(() => StringNullableFilter, {
-    nullable: true,
-  })
-  lastName?: StringNullableFilter;
+  address?: AddressWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -73,7 +52,29 @@ class CustomerWhereInput {
   @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  phone?: StringNullableFilter;
+  firstName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: StringNullableFilter,
+  })
+  @Type(() => StringNullableFilter)
+  @IsOptional()
+  @Field(() => StringNullableFilter, {
+    nullable: true,
+  })
+  lastName?: StringNullableFilter;
 
   @ApiProperty({
     required: false,
@@ -89,15 +90,14 @@ class CustomerWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => AddressWhereUniqueInput,
+    type: StringNullableFilter,
   })
-  @ValidateNested()
-  @Type(() => AddressWhereUniqueInput)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => AddressWhereUniqueInput, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  address?: AddressWhereUniqueInput;
+  phone?: StringNullableFilter;
 }
 
 export { CustomerWhereInput as CustomerWhereInput };
